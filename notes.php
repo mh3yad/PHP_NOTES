@@ -86,3 +86,26 @@ $person['name'] = 'hassan';
 $person['name'] ??='default';
 $_SESSION['counter']++ ?? 1;
 
+
+/**
+ * Session (file used by server, stored on sever, contain user data)
+ * store unlimited amount of data
+ * destroyed when user close the browser
+ * based on cookies
+ */
+session_start();
+echo session_id();
+$_SESSION['counter']++ ?? 1;
+echo $_SESSION['counter'];
+
+/**
+ * Cookie (file used by browser stored on client, contains user data)
+ * max 4KB
+ * used for:
+ * - session mgmt
+ * - personalization
+ * - Tracking
+ */
+
+setcookie("key","value",time()+60);
+
