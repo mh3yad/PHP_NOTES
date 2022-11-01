@@ -109,3 +109,56 @@ echo $_SESSION['counter'];
 
 setcookie("key","value",time()+60);
 
+
+/**
+ * File Upload
+ */
+
+
+if(isset($_FILES['file'])){
+    echo "<pre>";
+//    var_dump($_FILES);
+    echo "<pre>";
+
+    //Taking the files from input
+    $file = $_FILES['file'];
+    //Getting the file name of the uploaded file
+    $fileName = $file['name'];
+    //Getting the Temporary file name of the uploaded file
+    $fileTempName = $file['tmp_name'];
+    //Getting the file size of the uploaded file
+    $fileSize = $file['size'];
+    //getting the no. of error in uploading the file
+    $fileError = $file['error'];
+    //Getting the file type of the uploaded file
+    $fileType = $file['type'];
+    //Getting the file ext
+    $fileExt = explode('.',$fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    //Array of Allowed file type
+    $allowedExt = array("jpg","jpeg","png","pdf");
+    if(in_array($fileActualExt,$allowedExt)){
+        if($fileError==0){
+            if($fileSize < 400000){
+                $newFileName = uniqid('aa',true).".".$fileActualExt;
+                $fileDestination = 'Uploads/'.$newFileName;
+                move_uploaded_file($fileTempName,$fileDestination);
+                echo "File Uploaded successfully";
+            }else{
+                echo "File Size Limit beyond acceptance";
+            }
+        }else{
+           echo "Something Went Wrong Please try again!";
+        }
+    }else{
+        echo "You can't upload $fileActualExt file";
+    }
+    
+}
+
+?>
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit">
+</form>
