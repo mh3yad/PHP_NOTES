@@ -179,3 +179,22 @@ echo 1;
 require './sfile.php';
 
 echo 2;
+
+
+
+/**
+ * File system
+ */
+
+echo __DIR__; // absolute path 
+echo "<br>";
+echo __FILE__; // relative path
+echo "<br>";
+
+//mkdir("./sayed");
+echo "<pre>";
+var_dump(scandir('./'));
+$data =  file_get_contents('./file.php');
+file_put_contents('./file.php',$data.PHP_EOL."added from here");
+$data =  file_get_contents('./file.php');
+echo $data;
