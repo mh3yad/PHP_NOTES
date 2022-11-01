@@ -162,3 +162,20 @@ if(isset($_FILES['file'])){
     <input type="file" name="file">
     <input type="submit">
 </form>
+
+
+
+<?php
+/**
+ * Require and Include
+ * You can include non php file, but has php ext
+ * include throws warning
+ * require throws error
+ * include_one to include it once
+ */
+include_once './file.php';
+include './sfile.php';
+echo 1;
+require './sfile.php';
+
+echo 2;
