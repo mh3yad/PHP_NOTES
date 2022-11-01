@@ -84,4 +84,7 @@ echo $decide;
 $person=[];
 $person['name'] = 'hassan';
 $person['name'] ??='default';
+$_SESSION['counter']++ ?? 1;
+1
+
 
