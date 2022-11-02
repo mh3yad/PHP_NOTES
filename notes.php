@@ -254,6 +254,14 @@ class Person
 //
 //$p2->getColor();
 
+/**
+ * call_user_function
+ *
+ * @param [type] $arg1
+ * @param [type] $arg2
+ * @param [type] $arg3
+ * @return void
+ */
 function callback($arg1,$arg2,$arg3){
 
 }
@@ -261,3 +269,16 @@ function callback($arg1,$arg2,$arg3){
 call_user_func('callback','arg1','arg2','arg3',...arg);
 
 call_user_func_array('callback',['ag1','arg2','arg3'])
+
+
+/**
+ * Magic methods
+ * __tostring()
+ * __get($prop)
+ * __set($prop,$value)
+ * __call($method,$args)
+ * __invoke() make object is_callable()
+ * __sleep() -> works before serialize
+ * __wakeup() -> works after unserialize which make new Object
+ * __clone() 
+ */
