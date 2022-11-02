@@ -198,3 +198,58 @@ $data =  file_get_contents('./file.php');
 file_put_contents('./file.php',$data.PHP_EOL."added from here");
 $data =  file_get_contents('./file.php');
 echo $data;
+
+
+/**
+ * Referencing
+ * in PHP, means to access the same content with different names.
+ * Unlike C, Reference in PHP are not treated as pre-dereference pointer, but as alias, they aren't actual memory address.
+ * Original data won't be removed till all the references removed
+ * If you want to delete the content, set it to null
+ * normal variable are references like & vars and treated the same regarding garbage collection
+ * In PHP, variable name and variable content are different,referencing the
+ * see https://www.php.net/manual/en/language.references.whatare.php
+ */
+
+class Person
+{
+    public string $color = 'red';
+    public function __construct(){
+        var_dump($this);
+    }
+
+    /**
+     * @return void
+     */
+    public function getColor(): void
+    {
+        echo $this->color . PHP_EOL;
+    }
+
+}
+
+/**
+ * Create pointer to the object
+ */
+//$p1  = new Person();
+//$p2 = $p1;
+//$p1 = null;
+//$p2->getColor();
+
+/**
+ * Clone creates a pointer to the object
+ */
+//$p1  = new Person();
+//$p2 = clone $p1;
+//$p1 = null;
+//$p2->getColor();
+
+/**
+ * & same address of first object
+*/
+//$p1  = new Person();
+//$p2 = & $p1;
+//unset($p1); // has no effect
+//$p1 = null;
+//
+//$p2->getColor();
