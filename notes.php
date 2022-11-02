@@ -253,3 +253,11 @@ class Person
 //$p1 = null;
 //
 //$p2->getColor();
+
+function callback($arg1,$arg2,$arg3){
+
+}
+
+call_user_func('callback','arg1','arg2','arg3',...arg);
+
+call_user_func_array('callback',['ag1','arg2','arg3'])
