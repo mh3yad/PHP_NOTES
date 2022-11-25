@@ -11,8 +11,6 @@ var_dump($a); // return type and content
  */
 
 define('PI',3.14);
-echo PI;
-
 
 /**
  * type conversion
@@ -23,9 +21,7 @@ $b = (string) $a;
 /**
  * Numbers
  */
-echo "<br>";
 $a = number_format(15905.75,3,'.',',');
-echo $a;
 
 /**
  * String
@@ -36,11 +32,9 @@ echo "user name is $name";
 echo 'user name is $name';
 strpos($name,'t'); 
 stripos($name,'t');//ignore cases
-echo "<br>";
 echo nl2br("thi is
 long multinline
 text");
-
 $payload = "<script>alert()</script>";
 html_entity_decode(htmlentities($payload));
 
@@ -75,7 +69,6 @@ print_r(array_keys($arr));
 print_r(array_values($arr));
 ksort($arr);
 print_r($arr);
-echo "<br>";
 
 /**
  * null coalescing operator
@@ -116,8 +109,6 @@ setcookie("key","value",time()+60);
 /**
  * File Upload
  */
-
-
 if(isset($_FILES['file'])){
     echo "<pre>";
 //    var_dump($_FILES);
@@ -168,8 +159,8 @@ if(isset($_FILES['file'])){
 
 
 
-<?php
-/**
+
+/** 
  * Require and Include
  * You can include non php file, but has php ext
  * include throws warning
@@ -193,8 +184,7 @@ echo __DIR__; // absolute path
 echo "<br>";
 echo __FILE__; // relative path
 echo "<br>";
-
-//mkdir("./sayed");
+mkdir("./sayed");
 echo "<pre>";
 var_dump(scandir('./'));
 $data =  file_get_contents('./file.php');
@@ -210,9 +200,23 @@ echo $data;
  * Original data won't be removed till all the references removed
  * If you want to delete the content, set it to null
  * normal variable are references like & vars and treated the same regarding garbage collection
- * In PHP, variable name and variable content are different,referencing the
+ * In PHP, variable name and variable content are different.
  * see https://www.php.net/manual/en/language.references.whatare.php
  */
+
+$a = 1;
+$b =& $a;
+
+$b = 2;
+echo "$a,$b\n"; // 2,2
+
+$a = 3;
+echo "$a,$b\n"; // 3,3
+
+// Variables can be bound before being assigned
+$c =& $d;
+$c = 4;
+echo "$c,$d\n"; // 4,4
 
 class Person
 {
@@ -231,31 +235,25 @@ class Person
 
 }
 
-/**
- * Create pointer to the object
- */
-//$p1  = new Person();
-//$p2 = $p1;
-//$p1 = null;
-//$p2->getColor();
+//Create pointer to the object
+$p1  = new Person();
+$p2 = $p1;
+$p1 = null;
+$p2->getColor(); // red
 
-/**
- * Clone creates a pointer to the object
- */
-//$p1  = new Person();
-//$p2 = clone $p1;
-//$p1 = null;
-//$p2->getColor();
+//Clone creates a pointer to the object
+$p1  = new Person();
+$p2 = clone $p1;
+$p1 = null;
+$p2->getColor(); // red
 
-/**
- * & same address of first object
-*/
-//$p1  = new Person();
-//$p2 = & $p1;
-//unset($p1); // has no effect
-//$p1 = null;
-//
-//$p2->getColor();
+
+// & same address of first object
+$p1  = new Person();
+$p2 = & $p1;
+unset($p1); // has no effect
+$p2 = null;
+$p1->getColor(); // null
 
 /**
  * call_user_function
