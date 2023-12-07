@@ -279,7 +279,7 @@ call_user_func_array('callback',['ag1','arg2','arg3'])
  * __invoke() make object is_callable()
  * __sleep() -> works before serialize
  * __wakeup() -> works after unserialize which make new Object
- * __clone() 
+ * __clone() -> works when using clone keyword and can create new object
  */
  ```
  
